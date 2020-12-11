@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Don Raul Pisos</title>
-</head>
-<body>
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
-<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <title>Don Raul Pisos</title>
+  
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
 
 <style>
   .button {
@@ -30,22 +34,21 @@
   
 </style>
 
-<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
-    <button class="button" id="btn1">Piso 1</button>
-    <button class="button" id="btn2">Piso 2</button>
-    <button class="button" id="btn3">Piso 3</button>
-   
+  <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+      <button class="button" id="btn1">Piso 1</button>
+      <button class="button" id="btn2">Piso 2</button>
+      <button class="button" id="btn3">Piso 3</button>
   </div>
-  
 
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">   
+    <a-marker preset="hiro">
+        <img src="./piso1.jpg" id="imgPiso" width="100" height="100" />    
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
 
-<body style='margin : 0px; overflow: hidden;'>
-  
-    <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">   
-      <a-marker preset="hiro">
-        <img src="./piso1.jpg" id="imgPiso" width="100" height="100" />
-    
+</body>
+
 <script>
   let bolActivo = false;
 
@@ -56,13 +59,14 @@
           //var v = document.querySelector('#mivideo').play();
             let imgPiso = document.getElementById('imgPiso');
             imgPiso.src= "./piso1.jpg";
-
+            navigator.vibrate(2);
       })
       m.addEventListener("markerLost", (e)=>{
           console.log("lost")
           bolActivo = false;
           //var v = document.querySelector('#mivideo').pause();
           imgPiso.src= "";
+          navigator.vibrate(2);
       })
 
 
@@ -70,6 +74,7 @@
         if(bolActivo==true){
               let imgPiso = document.getElementById('imgPiso');
               imgPiso.src= "./piso1.jpg";
+              navigator.vibrate(2);
         }
         
       });
@@ -79,6 +84,7 @@
         if(bolActivo==true){
               let imgPiso = document.getElementById('imgPiso');
               imgPiso.src= "./piso2.jpg";
+              navigator.vibrate(2);
         }
       });
 
@@ -86,16 +92,13 @@
           if(bolActivo==true){
                 let imgPiso = document.getElementById('imgPiso');
                 imgPiso.src= "./piso2.jpg";
+                navigator.vibrate(2);
           }
       })
 
-
     </script>
 
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-</body>
+
 </html>
 
 
