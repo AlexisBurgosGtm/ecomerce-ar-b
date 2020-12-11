@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Raul Pisos</title>
+</head>
+<body>
+
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
@@ -19,7 +28,7 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   
-  </style>
+</style>
 
 <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
     <button class="button" id="btn1">Piso 1</button>
@@ -32,70 +41,62 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <body style='margin : 0px; overflow: hidden;'>
-
+  
     <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">   
       <a-marker preset="hiro">
-        <div id="piso">
-          <img src="" width="300" heigh="300" id="imgPiso" />
-        
-        </div>
-
-        <video id="mivideo" crossOrigin="anonymous" playsinline webkitplaysinline autoplay controls muted src="1.mp4"></video>
-        <a-video src="#mivideo" position="0 0 0" scale="3 2 2" rotation="270 0 0" ></a-video>
-   
+        <img src="./piso1.jpg" id="imgPiso" width="100" height="100" />
+    
 <script>
   let bolActivo = false;
 
       var m = document.querySelector("a-marker")
       m.addEventListener("markerFound", (e)=>{
-      console.log("found")
-      bolActivo = true;
-      //var v = document.querySelector('#mivideo').play();
-        let imgPiso = document.getElementById('imgPiso');
-        imgPiso.src= "./piso1.jpg";
+          console.log("found")
+          bolActivo = true;
+          //var v = document.querySelector('#mivideo').play();
+            let imgPiso = document.getElementById('imgPiso');
+            imgPiso.src= "./piso1.jpg";
 
-})
+      })
       m.addEventListener("markerLost", (e)=>{
-      console.log("lost")
-      bolActivo = false;
-      //var v = document.querySelector('#mivideo').pause();
-      imgPiso.src= "";
-})
+          console.log("lost")
+          bolActivo = false;
+          //var v = document.querySelector('#mivideo').pause();
+          imgPiso.src= "";
+      })
 
 
-document.getElementById("btn1").addEventListener("click", (e)=>{
-  if(bolActivo==true){
-        let imgPiso = document.getElementById('imgPiso');
-        imgPiso.src= "./piso1.jpg";
-  }
-  //var v = document.querySelector('#mivideo').muted=false;
-  
-})
-document.getElementById("btn2").addEventListener("click", (e)=>{
+      document.getElementById("btn1").addEventListener("click", (e)=>{
+        if(bolActivo==true){
+              let imgPiso = document.getElementById('imgPiso');
+              imgPiso.src= "./piso1.jpg";
+        }
+        
+      });
 
-  //var v = document.querySelector('#mivideo').muted=true;
-  if(bolActivo==true){
-        let imgPiso = document.getElementById('imgPiso');
-        imgPiso.src= "./piso2.jpg";
-  }
+      document.getElementById("btn2").addEventListener("click", (e)=>{
+        //var v = document.querySelector('#mivideo').muted=true;
+        if(bolActivo==true){
+              let imgPiso = document.getElementById('imgPiso');
+              imgPiso.src= "./piso2.jpg";
+        }
+      });
 
-})
-document.getElementById("btn3").addEventListener("click", (e)=>{
-
-  //var v = document.querySelector('#mivideo').pause();
-
-  if(bolActivo==true){
-        let imgPiso = document.getElementById('imgPiso');
-        imgPiso.src= "./piso2.jpg";
-  }
-})
+      document.getElementById("btn3").addEventListener("click", (e)=>{
+          if(bolActivo==true){
+                let imgPiso = document.getElementById('imgPiso');
+                imgPiso.src= "./piso2.jpg";
+          }
+      })
 
 
-     </script>
+    </script>
+
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
 </body>
+</html>
 
 
 
