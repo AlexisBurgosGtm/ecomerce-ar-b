@@ -19,26 +19,26 @@ function getImagenPiso(codigo){
   let imgPiso3 = document.getElementById('imgPiso3');
   let imgPiso4 = document.getElementById('imgPiso4');
   
-  switch (Number(codigo)) {
-    case 1:
+  switch (codigo.toString()) {
+    case "1":
       imgPiso1.style = "visibility:visible";
       imgPiso2.style = "visibility:hidden";
       imgPiso3.style = "visibility:hidden";
       imgPiso4.style = "visibility:hidden";  
       break;
-    case 2:
+    case "2":
       imgPiso1.style = "visibility:hidden";
       imgPiso2.style = "visibility:visible";
       imgPiso3.style = "visibility:hidden";
       imgPiso4.style = "visibility:hidden";  
       break;
-    case 3:
+    case "3":
       imgPiso1.style = "visibility:hidden";
       imgPiso2.style = "visibility:hidden";
       imgPiso3.style = "visibility:visible";
       imgPiso4.style = "visibility:hidden";  
       break;
-    case 4:
+    case "4":
       imgPiso1.style = "visibility:hidden";
       imgPiso2.style = "visibility:hidden";
       imgPiso3.style = "visibility:hidden";
