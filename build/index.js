@@ -71,5 +71,66 @@ btnCerrarModal.addEventListener('click',()=>{
 
 let btnMenu = document.getElementById('btnMenu');
 btnMenu.addEventListener('click',()=>{
-  $('#modalMenu').modal('show');
+  //$('#modalMenu').modal('show');
+
+  document.getElementById('root').innerHTML = `
+      <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">   
+        <a-marker preset="hiro">
+          <a-image src="./piso2.jpg" id="imgPiso2" style="visibility: hidden;"></a-image>
+        </a-marker>
+        <a-entity camera></a-entity>
+      </a-scene>
+  `
+
 })
+
+
+function install_sw(){
+  function InicializarServiceWorkerNotif(){
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () =>
+     navigator.serviceWorker.register('sw.js')
+      .then(registration => console.log('Service Worker registered'))
+      .catch(err => 'SW registration failed'));
+    };
+    
+    requestPermission();
+  }
+  
+  if ('Notification' in window) {};
+  
+  function requestPermission() {
+    if (!('Notification' in window)) {
+      funciones.Aviso('Notification API not supported!');
+      return;
+    }
+    
+    Notification.requestPermission(function (result) {
+      //$status.innerText = result;
+    });
+  }
+
+  InicializarServiceWorkerNotif();
+  
+  const options = {
+      body : titulo,
+      icon: "../favicon.png",
+      vibrate: [1,2,3],
+    }
+    //image: "../favicon.png",
+       if (!('Notification' in window) || !('ServiceWorkerRegistration' in window)) {
+        console.log('Persistent Notification API not supported!');
+        return;
+      }
+      
+      try {
+        navigator.serviceWorker.getRegistration()
+          .then(reg => 
+                  reg.showNotification(msn, options)
+              )
+          .catch(err => console.log('Service Worker registration error: ' + err));
+      } catch (err) {
+        console.log('Notification API error: ' + err);
+      }
+    
+}

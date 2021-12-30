@@ -24,8 +24,13 @@
 <body class="bodystile">
 <img src="./favicon.png" width="50" height="50" />
 
+<div class="card" id="root">
+
+
+
   <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">   
-    <a-marker preset="hiro">
+    <a-marker-camera type='pattern' url='./marker.patt'>
+    <!--<a-marker preset="hiro">-->
       
       <a-image src="./piso1.jpg" id="imgPiso1" style="visibility: visible;"></a-image>
       <!--
@@ -33,9 +38,12 @@
       <a-image src="./piso3.jpg" id="imgPiso3" style="visibility: hidden;"></a-image>
       <a-image src="./piso4.jpg" id="imgPiso4" style="visibility: hidden;"></a-image>
       -->
-    </a-marker>
+    <!--</a-marker>-->
+    </a-marker-camera>
     <a-entity camera></a-entity>
   </a-scene>
+
+</div>
 
   <div class="fixed-btn btn-circle">
     <button class="btn btn-danger btn-circle btn-lg" id="btnMenu">+</button>
