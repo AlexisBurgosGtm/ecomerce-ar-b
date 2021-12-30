@@ -1,4 +1,5 @@
 
+/*
 var m = document.querySelector("a-marker")
 m.addEventListener("markerFound", (e)=>{
 console.log("found")
@@ -11,7 +12,7 @@ console.log("lost")
 //var v = document.querySelector('#mivideo').pause();
 window.navigator.vibrate(200);
 })
-
+*/
 
 function getImagenPiso(codigo){
   let imgPiso1 = document.getElementById('imgPiso1');
